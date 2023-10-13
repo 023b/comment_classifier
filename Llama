@@ -4,6 +4,7 @@ from googleapiclient.discovery import build
 # module that provides sentiment scores based on the words used
 #  give us scores of the following categories: Positive, Negative, Neutral
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import matplotlib.pyplot as plt
 
 # YouTube Data API v3 is used to get  comments and likes from youtube videos
 API_KEY = 'AIzaSyDARlBwA1CisMJZ0FCZw87V3QGvrpm7wBc'
@@ -89,3 +90,15 @@ print('Total Likes: ' + str(total_likes))
 print('Positive Comments: ' + str(positive_comments) + ' (' + str(positive_percentage) + ' %)')
 print('Negative Comments: ' + str(negative_comments) + ' (' + str(negative_percentage) + ' %)')
 print('Neutral Comments: ' + str(neutral_comments) + ' (' + str(neutral_percentage) + ' %)')
+
+per = ['Positive', 'Negative', 'Neutral']
+percentages = [positive_percentage, negative_percentage, neutral_percentage]
+
+analyzer = ['Positive', 'Negative', 'Neutral']
+percentages = [positive_percentage, negative_percentage, neutral_percentage]
+
+plt.bar(analyzer, percentages)
+plt.xlabel('per')
+plt.ylabel('Percentage')
+plt.title('Sentiment Analysis for Video Comments')
+plt.show()
